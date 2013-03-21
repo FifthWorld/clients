@@ -254,32 +254,32 @@ public class SysRegManagementParamsForm extends javax.swing.JDialog {
 //            return;
 //        }
 
-        if (txtFromDate.getValue() == null) {
-            MessageUtility.displayMessage(ClientMessage.CHECK_NOTNULL_DATEFROM);
-            dateFilled = false;
-            return;
-        } else {
-            tmpFrom = (Date) txtFromDate.getValue();
-            dateFilled = true;
-            searchParams.setFromDate(tmpFrom);
-        }
-        if (txtToDate.getValue() == null) {
-            MessageUtility.displayMessage(ClientMessage.CHECK_NOTNULL_DATETO);
-            dateFilled = true;
-            return;
-        } else {
-            tmpTo = (Date) txtToDate.getValue();
-            searchParams.setToDate(tmpTo);
-        }
-
-        System.out.println(dateFilled);
-        System.out.println(txtFromDate.getValue());
-        System.out.println(txtToDate.getValue());
-        if (dateFilled) {
-            sysRegManagementBean.passParameter(searchParams);
-            showReport(ReportManager.getSysRegManagementReport(sysRegManagementBean, tmpFrom, tmpTo, tmpLocation));
-            this.dispose();
-        }
+//        if (txtFromDate.getValue() == null) {
+//            MessageUtility.displayMessage(ClientMessage.CHECK_NOTNULL_DATEFROM);
+//            dateFilled = false;
+//            return;
+//        } else {
+//            tmpFrom = (Date) txtFromDate.getValue();
+//            dateFilled = true;
+//            searchParams.setFromDate(tmpFrom);
+//        }
+//        if (txtToDate.getValue() == null) {
+//            MessageUtility.displayMessage(ClientMessage.CHECK_NOTNULL_DATETO);
+//            dateFilled = true;
+//            return;
+//        } else {
+//            tmpTo = (Date) txtToDate.getValue();
+//            searchParams.setToDate(tmpTo);
+//        }
+//
+//        System.out.println(dateFilled);
+//        System.out.println(txtFromDate.getValue());
+//        System.out.println(txtToDate.getValue());
+//        if (dateFilled) {
+//            sysRegManagementBean.passParameter(searchParams);
+//            showReport(ReportManager.getSysRegManagementReport(sysRegManagementBean, tmpFrom, tmpTo, tmpLocation));
+//            this.dispose();
+//        }
 
         this.dispose();
     }//GEN-LAST:event_viewReportActionPerformed
