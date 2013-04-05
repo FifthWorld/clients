@@ -268,5 +268,15 @@ public class SysRegManagementBean extends AbstractIdBean {
         return collection;
     }
 
+  //      /** Passes from date and to date search criteria. */
+    public void passParameter(SysRegManagementParamsBean params) {
+//        applicationSearchResultsList.clear();
+        SysRegManagementParamsTO paramsTO = TypeConverters.BeanToTrasferObject(params,
+                SysRegManagementParamsTO.class);
 
+        List<SysRegManagementTO> managementViewTO =
+                WSManager.getInstance().getAdministrative().getSysRegManagement(paramsTO);
+        TypeConverters.TransferObjectListToBeanList(managementViewTO,
+                SysRegManagementBean.class, (List) this.getMenagementList());
+    }
 }
