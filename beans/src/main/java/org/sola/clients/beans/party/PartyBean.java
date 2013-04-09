@@ -27,6 +27,8 @@
  */
 package org.sola.clients.beans.party;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.UUID;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
@@ -70,6 +72,7 @@ public class PartyBean extends PartySummaryBean {
     public static final String FATHERSNAME_PROPERTY = "fathersName";
     public static final String GRANDFATHERSNAME_PROPERTY = "fathersLastName";
     public static final String ALIAS_PROPERTY = "alias";
+    public static final String DATE_OF_BIRTH = "dateOfBirth";
     
     @Length(max = 50, message =  ClientMessage.CHECK_FIELD_INVALID_LENGTH_MAIL, payload=Localized.class)
     @Email(message = ClientMessage.CHECK_INVALID_EMAIL, payload=Localized.class)
@@ -93,6 +96,8 @@ public class PartyBean extends PartySummaryBean {
     private CommunicationTypeBean communicationTypeBean;
     private SolaList<PartyRoleBean> roleList;
     private transient PartyRoleBean selectedRole;
+    //modified by wandechris
+    private Date dateOfBirth;
 
     /** 
      * Default constructor to create party bean. Initializes 
@@ -122,6 +127,7 @@ public class PartyBean extends PartySummaryBean {
         this.setAddress(new AddressBean());
         roleList.clear();
         this.setSelectedRole(null);
+        this.setDateOfBirth(null);
     }
 
     public AddressBean getAddress() {
@@ -256,7 +262,20 @@ public class PartyBean extends PartySummaryBean {
         this.phone = value;
         propertySupport.firePropertyChange(PHONE_PROPERTY, oldValue, this.phone);
     }
+    
+    //modified by Friday
 
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+   
+    public void setDateOfBirth(Date value) {
+        Date oldValue = dateOfBirth;
+        this.dateOfBirth = value;
+        propertySupport.firePropertyChange(DATE_OF_BIRTH, oldValue, this.dateOfBirth);
+    }
+
+    
     public PartyRoleBean getSelectedRole() {
         return selectedRole;
     }
@@ -272,7 +291,7 @@ public class PartyBean extends PartySummaryBean {
         }
         return communicationTypeBean;
     }
-
+      
     public void setPreferredCommunication(CommunicationTypeBean communicationTypeBean) {
         this.setJointRefDataBean(getPreferredCommunication(), communicationTypeBean, PREFERRED_COMMUNICATION_PROPERTY);
     }
