@@ -59,6 +59,7 @@ import org.sola.clients.beans.validation.ValidationResultBean;
 import org.sola.clients.reports.ReportManager;
 import org.sola.clients.swing.common.LafManager;
 import org.sola.clients.swing.common.controls.AutoCompletion;
+import org.sola.clients.swing.common.controls.CalendarForm;
 import org.sola.clients.swing.common.converters.BigDecimalMoneyConverter;
 import org.sola.clients.swing.common.tasks.SolaTask;
 import org.sola.clients.swing.common.tasks.TaskManager;
@@ -971,6 +972,9 @@ public class ApplicationPanel extends ContentPanel {
         labPreferredWay = new javax.swing.JLabel();
         cbxCommunicationWay = new javax.swing.JComboBox();
         jPanel19 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        txtDateOfBirth = new javax.swing.JFormattedTextField();
+        btnChooseDateOfBirth = new javax.swing.JButton();
         groupPanel1 = new org.sola.clients.swing.ui.GroupPanel();
         jPanel25 = new javax.swing.JPanel();
         jPanel24 = new javax.swing.JPanel();
@@ -1626,15 +1630,46 @@ public class ApplicationPanel extends ContentPanel {
 
         jPanel19.setName(bundle.getString("ApplicationPanel.jPanel19.name")); // NOI18N
 
+        jLabel3.setText(bundle.getString("ApplicationPanel.jLabel3.text")); // NOI18N
+        jLabel3.setName(bundle.getString("ApplicationPanel.jLabel3.name")); // NOI18N
+
+        txtDateOfBirth.setText(bundle.getString("ApplicationPanel.txtDateOfBirth.text")); // NOI18N
+        txtDateOfBirth.setName(bundle.getString("ApplicationPanel.txtDateOfBirth.name")); // NOI18N
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, appBean, org.jdesktop.beansbinding.ELProperty.create("${contactPerson.dateOfBirth}"), txtDateOfBirth, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
+
+        btnChooseDateOfBirth.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
+        btnChooseDateOfBirth.setText(bundle.getString("ApplicationPanel.btnChooseDateOfBirth.text_1")); // NOI18N
+        btnChooseDateOfBirth.setName(bundle.getString("ApplicationPanel.btnChooseDateOfBirth.name_1")); // NOI18N
+        btnChooseDateOfBirth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChooseDateOfBirthActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
         jPanel19.setLayout(jPanel19Layout);
         jPanel19Layout.setHorizontalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 202, Short.MAX_VALUE)
+            .addGroup(jPanel19Layout.createSequentialGroup()
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addGroup(jPanel19Layout.createSequentialGroup()
+                        .addComponent(txtDateOfBirth, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnChooseDateOfBirth, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 3, Short.MAX_VALUE))
         );
         jPanel19Layout.setVerticalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 52, Short.MAX_VALUE)
+            .addGroup(jPanel19Layout.createSequentialGroup()
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnChooseDateOfBirth)
+                    .addComponent(txtDateOfBirth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 7, Short.MAX_VALUE))
         );
 
         jPanel11.add(jPanel19);
@@ -1647,7 +1682,7 @@ public class ApplicationPanel extends ContentPanel {
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
+            .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addComponent(groupPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel12Layout.setVerticalGroup(
@@ -2033,7 +2068,7 @@ public class ApplicationPanel extends ContentPanel {
                 .addContainerGap()
                 .addGroup(servicesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(scrollFeeDetails1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
-                    .addComponent(tbServices, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE))
+                    .addComponent(tbServices, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE))
                 .addContainerGap())
         );
         servicesPanelLayout.setVerticalGroup(
@@ -2284,7 +2319,7 @@ public class ApplicationPanel extends ContentPanel {
                 .addGroup(propertyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(scrollPropertyDetails)
                     .addComponent(tbPropertyDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(propertypartPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE))
+                    .addComponent(propertypartPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         propertyPanelLayout.setVerticalGroup(
@@ -2356,7 +2391,7 @@ public class ApplicationPanel extends ContentPanel {
             documentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(documentPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(documentsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
+                .addComponent(documentsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(documentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(scrollDocRequired, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2384,7 +2419,7 @@ public class ApplicationPanel extends ContentPanel {
         mapPanel.setLayout(mapPanelLayout);
         mapPanelLayout.setHorizontalGroup(
             mapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 658, Short.MAX_VALUE)
+            .addGap(0, 656, Short.MAX_VALUE)
         );
         mapPanelLayout.setVerticalGroup(
             mapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2592,7 +2627,7 @@ public class ApplicationPanel extends ContentPanel {
                 .addGroup(feesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(feesPanelLayout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 2, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(scrollFeeDetails))
                 .addContainerGap())
         );
@@ -2652,7 +2687,7 @@ public class ApplicationPanel extends ContentPanel {
             validationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(validationPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(validationsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
+                .addComponent(validationsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
                 .addContainerGap())
         );
         validationPanelLayout.setVerticalGroup(
@@ -2714,7 +2749,7 @@ public class ApplicationPanel extends ContentPanel {
             historyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(historyPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(actionLogPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
+                .addComponent(actionLogPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
                 .addContainerGap())
         );
         historyPanelLayout.setVerticalGroup(
@@ -2732,7 +2767,7 @@ public class ApplicationPanel extends ContentPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlHeader, javax.swing.GroupLayout.DEFAULT_SIZE, 683, Short.MAX_VALUE)
-            .addComponent(jToolBar3, javax.swing.GroupLayout.DEFAULT_SIZE, 683, Short.MAX_VALUE)
+            .addComponent(jToolBar3, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(tabbedControlMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -2966,6 +3001,16 @@ public class ApplicationPanel extends ContentPanel {
     private void btnCertificateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCertificateActionPerformed
         openSysRegCertParamsForm(appBean.getNr());
     }//GEN-LAST:event_btnCertificateActionPerformed
+
+     private void showCalendar(JFormattedTextField dateField) {
+        CalendarForm calendar = new CalendarForm(null, true, dateField);
+        calendar.setVisible(true);
+    }
+     
+    private void btnChooseDateOfBirthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChooseDateOfBirthActionPerformed
+        // TODO add your handling code here:
+        showCalendar(txtDateOfBirth);
+    }//GEN-LAST:event_btnChooseDateOfBirthActionPerformed
 
     private void openSysRegCertParamsForm(String nr) {
         SysRegCertParamsForm certificateGenerator = new SysRegCertParamsForm(null, true, nr, null);
@@ -3440,6 +3485,7 @@ public class ApplicationPanel extends ContentPanel {
     private javax.swing.JButton btnCalculateFee;
     private javax.swing.JButton btnCancelService;
     private javax.swing.JButton btnCertificate;
+    private javax.swing.JButton btnChooseDateOfBirth;
     private javax.swing.JButton btnCompleteService;
     private javax.swing.JButton btnDownService;
     private javax.swing.JButton btnPrintFee;
@@ -3473,6 +3519,7 @@ public class ApplicationPanel extends ContentPanel {
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
@@ -3568,6 +3615,7 @@ public class ApplicationPanel extends ContentPanel {
     private javax.swing.JTextField txtArea;
     private javax.swing.JFormattedTextField txtCompleteBy;
     private javax.swing.JFormattedTextField txtDate;
+    private javax.swing.JFormattedTextField txtDateOfBirth;
     public javax.swing.JTextField txtEmail;
     public javax.swing.JTextField txtFax;
     public javax.swing.JTextField txtFirstName;
