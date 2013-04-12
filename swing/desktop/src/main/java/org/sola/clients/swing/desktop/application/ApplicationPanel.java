@@ -102,6 +102,14 @@ public class ApplicationPanel extends ContentPanel {
     ApplicationServiceBean service;
     ApplicationPropertyBean property;
 
+    //modifications made by adekola
+    private enum Units {
+
+        Acres, Hectares, SquareYard, SquareFeet;
+    }
+    Integer selectedUnit; //empty string to intialize
+
+    //store entered value in terms of the unit selected;
     /**
      * This method is used by the form designer to create {@link ApplicationBean}.
      * It uses
@@ -134,13 +142,13 @@ public class ApplicationPanel extends ContentPanel {
 
     private DocumentsManagementExtPanel createDocumentsPanel() {
         if (documentsPanel == null) {
-            if(appBean !=null){
-            documentsPanel = new DocumentsManagementExtPanel(
-                    appBean.getSourceList(), null, appBean.isEditingAllowed());
+            if (appBean != null) {
+                documentsPanel = new DocumentsManagementExtPanel(
+                        appBean.getSourceList(), null, appBean.isEditingAllowed());
             } else {
                 documentsPanel = new DocumentsManagementExtPanel();
             }
-        } 
+        }
         return documentsPanel;
     }
 
@@ -1019,6 +1027,8 @@ public class ApplicationPanel extends ContentPanel {
         txtFirstPart = new javax.swing.JTextField();
         labArea = new javax.swing.JLabel();
         txtArea = new javax.swing.JTextField();
+        cbxUnit = new javax.swing.JComboBox();
+        lblUnit = new javax.swing.JLabel();
         jPanel17 = new javax.swing.JPanel();
         txtLastPart = new javax.swing.JTextField();
         labLastPart = new javax.swing.JLabel();
@@ -2187,6 +2197,17 @@ public class ApplicationPanel extends ContentPanel {
         txtArea.setComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));
         txtArea.setHorizontalAlignment(JTextField.LEADING);
 
+        cbxUnit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sq.Meters", "Acres", "Hectares ", "Sq.Yard ", "Sq.Feet " }));
+        cbxUnit.setName(bundle.getString("ApplicationPanel.cbxUnit.name")); // NOI18N
+        cbxUnit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxUnitActionPerformed(evt);
+            }
+        });
+
+        lblUnit.setText(bundle.getString("ApplicationPanel.lblUnit.text")); // NOI18N
+        lblUnit.setName(bundle.getString("ApplicationPanel.lblUnit.name")); // NOI18N
+
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
         jPanel16Layout.setHorizontalGroup(
@@ -2196,9 +2217,15 @@ public class ApplicationPanel extends ContentPanel {
                 .addContainerGap(158, Short.MAX_VALUE))
             .addComponent(txtFirstPart, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
             .addGroup(jPanel16Layout.createSequentialGroup()
-                .addComponent(labArea)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(txtArea)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel16Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(labArea, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtArea, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbxUnit, 0, 1, Short.MAX_VALUE))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2207,9 +2234,13 @@ public class ApplicationPanel extends ContentPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtFirstPart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(labArea)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labArea)
+                    .addComponent(lblUnit))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbxUnit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -2805,7 +2836,40 @@ public class ApplicationPanel extends ContentPanel {
         BigDecimal value = null;
 
         try {
-            area = new BigDecimal(txtArea.getText());
+            // value of area entered must be converted to square meters before creating property
+            //Added by Adekola Adebayo 12/4/2013
+            BigDecimal convertedArea = new BigDecimal(0.00);
+            double meterVal;
+            double enteredVal;
+            switch (selectedUnit) {
+                case 0:
+                    enteredVal = Double.parseDouble(txtArea.getText());
+                    convertedArea = BigDecimal.valueOf(enteredVal);
+                    break;
+                case 1:
+                    enteredVal = Double.parseDouble(txtArea.getText());
+                    meterVal = ConvertAcresToMetres(enteredVal);
+                    convertedArea = BigDecimal.valueOf(meterVal);
+                    break;
+                case 2:
+                    enteredVal = Double.parseDouble(txtArea.getText());
+                    meterVal = ConvertHectaresToMetres(enteredVal);
+                    convertedArea = BigDecimal.valueOf(meterVal);
+                    break;
+                case 3:
+                    enteredVal = Double.parseDouble(txtArea.getText());
+                    meterVal = ConvertSqYardToMetres(enteredVal);
+                    convertedArea = BigDecimal.valueOf(meterVal);
+                    break;
+                case 4:
+                    enteredVal = Double.parseDouble(txtArea.getText());
+                    meterVal = ConvertSqFeetToMetres(enteredVal);
+                    convertedArea = BigDecimal.valueOf(meterVal);
+                    break;
+                default:
+                    break;
+            }
+            area = convertedArea;
         } catch (Exception e) {
         }
 
@@ -3002,15 +3066,62 @@ public class ApplicationPanel extends ContentPanel {
         openSysRegCertParamsForm(appBean.getNr());
     }//GEN-LAST:event_btnCertificateActionPerformed
 
-     private void showCalendar(JFormattedTextField dateField) {
+    //additions authored by Adekola Adebayo
+    //4/12/2013
+    private void showCalendar(JFormattedTextField dateField) {
         CalendarForm calendar = new CalendarForm(null, true, dateField);
         calendar.setVisible(true);
     }
-     
+
     private void btnChooseDateOfBirthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChooseDateOfBirthActionPerformed
         // TODO add your handling code here:
         showCalendar(txtDateOfBirth);
     }//GEN-LAST:event_btnChooseDateOfBirthActionPerformed
+
+    double ConvertAcresToMetres(double acre) {
+        return acre * 4046.856;
+    }
+
+    double ConvertSqYardToMetres(double yard) {
+        return yard * 0.836;
+    }
+
+    double ConvertSqFeetToMetres(double feet) {
+        return feet * 0.929;
+    }
+
+    double ConvertHectaresToMetres(double hec) {
+        return hec * 10000;
+    }
+
+    private void cbxUnitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxUnitActionPerformed
+        // TODO add your handling code here:
+        int selectedIndex = (Integer) cbxUnit.getSelectedIndex();
+        switch (selectedIndex) {
+            case 0:
+                selectedUnit = 0;
+                lblUnit.setText("(m2)");
+                break;
+            case 1:
+                selectedUnit = 1;
+                lblUnit.setText("(ac)");
+                break;
+            case 2:
+                selectedUnit = 2;
+                lblUnit.setText("(ha)");
+                break;
+            case 3:
+                selectedUnit = 3;
+                lblUnit.setText("(yard2)");
+                break;
+            case 4:
+                selectedUnit = 4;
+                lblUnit.setText("(ft2)");
+                break;
+
+
+        }
+    }//GEN-LAST:event_cbxUnitActionPerformed
 
     private void openSysRegCertParamsForm(String nr) {
         SysRegCertParamsForm certificateGenerator = new SysRegCertParamsForm(null, true, nr, null);
@@ -3503,6 +3614,7 @@ public class ApplicationPanel extends ContentPanel {
     public javax.swing.JComboBox cbxCommunicationWay;
     private javax.swing.JComboBox cbxLandUse;
     private javax.swing.JCheckBox cbxPaid;
+    private javax.swing.JComboBox cbxUnit;
     private org.sola.clients.beans.referencedata.CommunicationTypeListBean communicationTypes;
     public javax.swing.JPanel contactPanel;
     public javax.swing.JPanel documentPanel;
@@ -3572,6 +3684,7 @@ public class ApplicationPanel extends ContentPanel {
     private javax.swing.JLabel labTotalFee3;
     private javax.swing.JLabel labValue;
     private org.sola.clients.beans.referencedata.LandUseTypeListBean landUseTypeListBean1;
+    private javax.swing.JLabel lblUnit;
     public javax.swing.JPanel mapPanel;
     private javax.swing.JMenuItem menuAddService;
     private javax.swing.JMenuItem menuApprove;
