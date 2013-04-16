@@ -39,7 +39,7 @@
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\adekola\Pictures\new_splash.png"/>
+          <Image iconType="3" name="/images/sola/splash_desktop_client.png"/>
         </Property>
         <Property name="alignmentY" type="float" value="0.0"/>
         <Property name="iconTextGap" type="int" value="0"/>

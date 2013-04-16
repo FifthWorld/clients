@@ -3072,11 +3072,11 @@ public class ApplicationPanel extends ContentPanel {
     }
 
     double ConvertSqYardToMetres(double yard) {
-        return yard * 0.836;
+        return yard * 0.8361;
     }
 
     double ConvertSqFeetToMetres(double feet) {
-        return feet * 0.929;
+        return feet * 0.0929;
     }
 
     double ConvertHectaresToMetres(double hec) {
