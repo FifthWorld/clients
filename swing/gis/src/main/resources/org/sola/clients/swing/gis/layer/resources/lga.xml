@@ -44,9 +44,6 @@
                     <MaxScaleDenominator>625000</MaxScaleDenominator>
 	   
                     <PolygonSymbolizer>
-                        <Fill>
-                            <CssParameter name="fill">#ffffff</CssParameter>
-                        </Fill>
                         <Stroke>
                             <CssParameter name="stroke">#660033</CssParameter>
                             <CssParameter name="stroke-width">1</CssParameter>
@@ -57,9 +54,6 @@
                     <Name>Scale &gt; 625000</Name>
                     <MinScaleDenominator>625000</MinScaleDenominator>
                     <PolygonSymbolizer>
-                        <Fill>
-                            <CssParameter name="fill">#ffffff</CssParameter>
-                        </Fill>
                         <Stroke>
                             <CssParameter name="stroke">#660033</CssParameter>
                             <CssParameter name="stroke-width">0.2</CssParameter>

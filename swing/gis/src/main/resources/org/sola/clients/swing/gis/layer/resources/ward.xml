@@ -14,9 +14,6 @@
             <CssParameter name="stroke">#ff3300</CssParameter>
             <CssParameter name="stroke-width">1.5</CssParameter>
         </Stroke>
-         <Fill>
-           <CssParameter name="fill">#ffffff</CssParameter>
-         </Fill>
        </PolygonSymbolizer>
        <TextSymbolizer>
          <Label>
@@ -47,9 +44,7 @@
        <MaxScaleDenominator>625000</MaxScaleDenominator>
 	   
        <PolygonSymbolizer>
-         <Fill>
-           <CssParameter name="fill">#ffffff</CssParameter>
-         </Fill>
+         
             <Stroke>
                 <CssParameter name="stroke">#ff3300</CssParameter>
                 <CssParameter name="stroke-width">1</CssParameter>
@@ -60,9 +55,7 @@
        <Name>Scale &gt; 625000</Name>
        <MinScaleDenominator>625000</MinScaleDenominator>
        <PolygonSymbolizer>
-         <Fill>
-           <CssParameter name="fill">#ffffff</CssParameter>
-         </Fill>
+        
         <Stroke>
             <CssParameter name="stroke">#ff3300</CssParameter>
             <CssParameter name="stroke-width">0.2</CssParameter>
