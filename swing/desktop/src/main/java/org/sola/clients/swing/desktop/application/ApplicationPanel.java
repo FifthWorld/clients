@@ -34,6 +34,7 @@ import java.awt.ComponentOrientation;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
@@ -106,7 +107,7 @@ public class ApplicationPanel extends ContentPanel {
 
         Acres, Hectares, SquareYard, SquareFeet;
     }
-    Integer selectedUnit; //empty string to intialize
+    Integer selectedUnit = 0; //initialize selectedUnit to the first one i.e. Sq Meters
 
     //store entered value in terms of the unit selected;
     /**
@@ -1641,6 +1642,7 @@ public class ApplicationPanel extends ContentPanel {
         btnChooseDateOfBirth.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
         btnChooseDateOfBirth.setText(bundle.getString("ApplicationPanel.btnChooseDateOfBirth.text_1")); // NOI18N
         btnChooseDateOfBirth.setName(bundle.getString("ApplicationPanel.btnChooseDateOfBirth.name_1")); // NOI18N
+        btnChooseDateOfBirth.setPreferredSize(new java.awt.Dimension(17, 17));
         btnChooseDateOfBirth.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChooseDateOfBirthActionPerformed(evt);
@@ -1653,22 +1655,22 @@ public class ApplicationPanel extends ContentPanel {
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel19Layout.createSequentialGroup()
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
                     .addGroup(jPanel19Layout.createSequentialGroup()
-                        .addComponent(txtDateOfBirth, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnChooseDateOfBirth, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 3, Short.MAX_VALUE))
+                        .addComponent(jLabel3)
+                        .addGap(0, 118, Short.MAX_VALUE))
+                    .addComponent(txtDateOfBirth))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnChooseDateOfBirth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel19Layout.setVerticalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel19Layout.createSequentialGroup()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnChooseDateOfBirth)
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnChooseDateOfBirth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDateOfBirth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 7, Short.MAX_VALUE))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
         jPanel11.add(jPanel19);
@@ -2203,8 +2205,8 @@ public class ApplicationPanel extends ContentPanel {
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addComponent(labFirstPart)
-                .addContainerGap(158, Short.MAX_VALUE))
-            .addComponent(txtFirstPart, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+                .addContainerGap())
+            .addComponent(txtFirstPart)
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel16Layout.createSequentialGroup()
@@ -2212,9 +2214,9 @@ public class ApplicationPanel extends ContentPanel {
                         .addComponent(labArea, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtArea, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtArea))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbxUnit, 0, 1, Short.MAX_VALUE))
+                .addComponent(cbxUnit, 0, 81, Short.MAX_VALUE))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2827,38 +2829,44 @@ public class ApplicationPanel extends ContentPanel {
         try {
             // value of area entered must be converted to square meters before creating property
             //Added by Adekola Adebayo 12/4/2013
-            BigDecimal convertedArea = new BigDecimal(0.00);
+            BigDecimal convertedArea;
+            BigDecimal roundedAreaVal = new BigDecimal(0.00);
             double meterVal;
             double enteredVal;
             switch (selectedUnit) {
                 case 0:
                     enteredVal = Double.parseDouble(txtArea.getText());
                     convertedArea = BigDecimal.valueOf(enteredVal);
+                    roundedAreaVal = convertedArea.setScale(2, RoundingMode.UP);
                     break;
                 case 1:
                     enteredVal = Double.parseDouble(txtArea.getText());
                     meterVal = ConvertAcresToMetres(enteredVal);
                     convertedArea = BigDecimal.valueOf(meterVal);
+                    roundedAreaVal = convertedArea.setScale(2, RoundingMode.UP);
                     break;
                 case 2:
                     enteredVal = Double.parseDouble(txtArea.getText());
                     meterVal = ConvertHectaresToMetres(enteredVal);
                     convertedArea = BigDecimal.valueOf(meterVal);
+                    roundedAreaVal = convertedArea.setScale(2, RoundingMode.UP);
                     break;
                 case 3:
                     enteredVal = Double.parseDouble(txtArea.getText());
                     meterVal = ConvertSqYardToMetres(enteredVal);
                     convertedArea = BigDecimal.valueOf(meterVal);
+                    roundedAreaVal = convertedArea.setScale(2, RoundingMode.UP);
                     break;
                 case 4:
                     enteredVal = Double.parseDouble(txtArea.getText());
                     meterVal = ConvertSqFeetToMetres(enteredVal);
                     convertedArea = BigDecimal.valueOf(meterVal);
+                    roundedAreaVal = convertedArea.setScale(2, RoundingMode.UP);
                     break;
                 default:
                     break;
             }
-            area = convertedArea;
+            area = roundedAreaVal;
         } catch (Exception e) {
         }
 

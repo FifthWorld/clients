@@ -526,8 +526,8 @@ if (theme=="green") {
  
  if (theme=="orange") {
        //      #### Primary Colors  ####        
-        UIManager.put("nimbusBase", new Color(255,130,20)); /*DEFAULT COLOR USED (51,98,140) 107,142,35 */
-        UIManager.put("control", new Color(255,130,20)); /*DEFAULT BACKGROUND (214,217,223)*/
+        UIManager.put("nimbusBase", new Color(160,107,35)); /*DEFAULT COLOR USED (51,98,140) 107,142,35 */
+        UIManager.put("control", new Color(250,245,240)); /*DEFAULT BACKGROUND (214,217,223)*/
         UIManager.put("info", new Color(242,242,189)); /*TOOL TIP INFO (242,242,189)*/
         UIManager.put("nimbusAlertYellow", new Color(255,220,35));  /*ALERT TRIANGLE (255,220,35)*/	 
         UIManager.put("nimbusDisabledText", new Color(255,255,255));	/*(142,143,145)*/ 
@@ -543,7 +543,7 @@ if (theme=="green") {
 
 //      ####  Secondary Colors   #####
          UIManager.put("activeCaption", new Color(186,190,198)); 	/*(186,190,198)*/ 
-         UIManager.put("background", new Color(255,130,20));           /*(214,217,223)*/ 
+         UIManager.put("background", new Color(214,217,223));           /*(214,217,223)*/ 
          UIManager.put("controlDkShadow", new Color(164,171,184)); 	/*(164,171,184)*/  
 //         UIManager.put("controlHighlight", new Color(233,236,242)); 	/*(233,236,242)*/  
 //         UIManager.put("controlLHighligh", new Color(247,248,250)); 	/*(247,248,250)*/  
@@ -553,13 +553,13 @@ if (theme=="green") {
          UIManager.put("inactiveCaption", new Color(189,193,200)); 	/*(189,193,200)*/ 
          UIManager.put("infoText", new Color(0,0,0));                   /*(0,0,0)*/ 
          UIManager.put("menu", new Color(237,239,242));                 /*(237,239,242)*/ 
-       //  UIManager.put("menuText", new Color(0,0,0));                   /*(0,0,0)*/ 
+         UIManager.put("menuText", new Color(0,0,0));                   /*(0,0,0)*/ 
          UIManager.put("nimbusBlueGrey", new Color(145,105,85));        /*BORDER, CAPTION (169,176,190)*/
          UIManager.put("nimbusBorder", new Color(146,151,161)); 	/* BORDERs OF SECTIONs(146,151,161)*/
          UIManager.put("nimbusSelection", new Color(190,124,124));          /*SELECTED ELEMENT (57,105,138)*/ 
-         UIManager.put("scrollbar", new Color(255,130,20));            /*(205,208,213)*/ 
+         UIManager.put("scrollbar", new Color(205,208,213));            /*(205,208,213)*/ 
          UIManager.put("textBackground", new Color(57,105,138));        /*(57,105,138)*/ 
-         UIManager.put("textForeground", new Color(0,0,0));             /*(0,0,0)*/ 
+//         UIManager.put("textForeground", new Color(0,0,0));             /*(0,0,0)*/ 
          UIManager.put("textHighlight", new Color(255,255,255));         /*(57,105,138)*/ 
          UIManager.put("textHighlightText", new Color(255,255,255));  	/*(255,255,255)*/  
          UIManager.put("textInactiveText", new Color(143,142,145));     /*(142,143,145)*/ 
@@ -568,8 +568,8 @@ if (theme=="green") {
          UIManager.put("PasswordField.background", new Color(245,231,162));   /*(231,245,162)  ALEX[200,244,200]*/
          UIManager.put("Table.background", new Color(245,231,162)); 
          UIManager.put("Table.alternateRowColor", new Color(233,218,150));
-         UIManager.put("Button.background", new Color(255,170,0)); 
-         UIManager.put("List.background", new Color(255,170,0)); 
+         UIManager.put("Button.background", new Color(210,190,120)); 
+         UIManager.put("List.background", new Color(210,190,120)); 
          UIManager.put("Table.dropLineColor", new Color(212, 166, 150)); 
          UIManager.put("List.foreground", new Color(102, 0, 51)); 
 
