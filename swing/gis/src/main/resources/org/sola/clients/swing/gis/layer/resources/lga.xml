@@ -14,9 +14,6 @@
                             <CssParameter name="stroke">#660033</CssParameter>
                             <CssParameter name="stroke-width">1.5</CssParameter>
                         </Stroke>
-                        <Fill>
-                            <CssParameter name="fill">#ffffff</CssParameter>
-                        </Fill>
                     </PolygonSymbolizer>
                     <TextSymbolizer>
                         <Label>
