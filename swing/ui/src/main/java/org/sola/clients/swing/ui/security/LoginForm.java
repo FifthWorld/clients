@@ -109,7 +109,7 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(136, 206, 168));
+        jPanel1.setBackground(new java.awt.Color(255, 130, 20));
         jPanel1.setName("jPanel1"); // NOI18N
 
         loginPanel.setName("loginPanel"); // NOI18N
