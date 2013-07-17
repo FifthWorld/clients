@@ -32,7 +32,10 @@ package org.sola.clients.beans.application;
 import java.math.BigDecimal;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.sola.clients.beans.AbstractIdBean;
+import org.sola.clients.beans.address.AddressBean;
 import org.sola.clients.beans.cache.CacheManager;
+import org.sola.clients.beans.referencedata.CapacityTypeBean;
+import org.sola.clients.beans.referencedata.DevelopmentStageTypeBean;
 import org.sola.clients.beans.referencedata.LandUseTypeBean;
 import org.sola.clients.beans.validation.Localized;
 import org.sola.common.messaging.ClientMessage;
@@ -56,6 +59,15 @@ public class ApplicationPropertyBean extends AbstractIdBean {
     public static final String BA_UNIT_ID_PROPERTY = "baUnitId";
     public static final String LAND_USE_TYPE_PROPERTY = "landUseType";
     public static final String LAND_USE_CODE_PROPERTY = "landUseCode";
+    //modified by wandechris
+    public static final String CAPACITY_TYPE_PROPERTY = "capacityType";
+    public static final String CAPACITY_CODE_PROPERTY = "capacityCode";
+    public static final String DEVELOPMENT_STAGE_TYPE_PROPERTY = "developmentStageType";
+    public static final String DEVELOPMENT_STAGE_CODE_PROPERTY= "developmentStageCode";
+    public static final String PROPERTY_DURATION_PROPERTY = "propertyDuration";
+    
+    
+    
     private String applicationId;
     private BigDecimal area;
     @NotEmpty(message = ClientMessage.CHECK_NOTNULL_FIRSTPART, payload = Localized.class)
@@ -68,9 +80,26 @@ public class ApplicationPropertyBean extends AbstractIdBean {
     private boolean verifiedLocation;
     private boolean verifiedApplications;
     private LandUseTypeBean landUseType;
+    
+    private DevelopmentStageTypeBean developmentStageType;
+    private CapacityTypeBean capacityType;
+    //private String propertyLocation;
+    private AddressBean addressBean;
+    private String propertyDuration;
 
     public ApplicationPropertyBean() {
         super();
+    }
+    
+    public AddressBean getAddress() {
+        if (addressBean == null) {
+            addressBean = new AddressBean();
+        }
+        return addressBean;
+    }
+
+    public void setAddress(AddressBean addressBean) {
+        this.addressBean = addressBean;
     }
     
     public String getLandUseCode() {
@@ -98,6 +127,61 @@ public class ApplicationPropertyBean extends AbstractIdBean {
     public void setLandUseType(LandUseTypeBean landUseType) {
         this.landUseType = landUseType;
     }
+    
+    //modified by WandeChris
+     public String getCapacityCode() {
+        if (capacityType != null) {
+            return capacityType.getCode();
+        } else {
+            return null;
+        }
+    }
+
+    public void setCapacityCode(String capacityCode) {
+        String oldValue = null;
+        if (capacityType != null) {
+            oldValue = capacityType.getCode();
+        }
+        setCapacityType(CacheManager.getBeanByCode(
+                CacheManager.getCapacityTypes(), capacityCode));
+        propertySupport.firePropertyChange(CAPACITY_CODE_PROPERTY, oldValue, capacityCode);
+    }
+
+    public CapacityTypeBean getCapacityType() {
+        return capacityType;
+    }
+
+    public void setCapacityType(CapacityTypeBean capacityType) {
+        this.capacityType = capacityType;
+    }
+    
+     public String getDevelopmentStageCode() {
+        if (developmentStageType != null) {
+            return developmentStageType.getCode();
+        } else {
+            return null;
+        }
+    }
+
+    public void setDevelopmentStageCode(String developmentStageCode) {
+        String oldValue = null;
+        if (developmentStageType != null) {
+            oldValue = developmentStageType.getCode();
+        }
+        setDevelopmentStageType(CacheManager.getBeanByCode(
+                CacheManager.getDevelopmentStageTypes(), developmentStageCode));
+        propertySupport.firePropertyChange(CAPACITY_CODE_PROPERTY, oldValue, developmentStageCode);
+    }
+
+    public DevelopmentStageTypeBean getDevelopmentStageType() {
+        return developmentStageType;
+    }
+
+    public void setDevelopmentStageType(DevelopmentStageTypeBean developmentStageType) {
+        this.developmentStageType = developmentStageType;
+    }
+    
+    
 
     public String getApplicationId() {
         return applicationId;
@@ -188,4 +272,17 @@ public class ApplicationPropertyBean extends AbstractIdBean {
         totalValue = val;
         propertySupport.firePropertyChange(TOTAL_VALUE_PROPERTY, old, val);
     }
+
+    //modified by wandeChris
+    public String getPropertyDuration() {
+        return propertyDuration;
+    }
+
+    public void setPropertyDuration(String value) {
+        String old = propertyDuration;
+        propertyDuration = value;
+        propertySupport.firePropertyChange(PROPERTY_DURATION_PROPERTY, old, value);
+    }
+    
+    
 }

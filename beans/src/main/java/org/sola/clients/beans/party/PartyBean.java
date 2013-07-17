@@ -73,6 +73,14 @@ public class PartyBean extends PartySummaryBean {
     public static final String GRANDFATHERSNAME_PROPERTY = "fathersLastName";
     public static final String ALIAS_PROPERTY = "alias";
     public static final String DATE_OF_BIRTH = "dateOfBirth";
+    public static final String STATE_TYPE_PROPERTY = "state_of_origin";
+    public static final String STATE_CODE_PROPERTY = "stateCode";
+    public static final String LGA_TYPE_PROPERTY = "lga_code";
+    public static final String LGA_CODE_PROPERTY = "lgaCode";
+    public static final String HOME_TOWN_PROPERTY = "home_town";
+    public static final String CORPORATE_NAME_PROPERTY = "corporate_name";
+    public static final String OCCUPATION_PROPERTY = "occupation";
+    public static final String EMPLOYER_NAME_PROPERTY = "employer_name";
     
     @Length(max = 50, message =  ClientMessage.CHECK_FIELD_INVALID_LENGTH_MAIL, payload=Localized.class)
     @Email(message = ClientMessage.CHECK_INVALID_EMAIL, payload=Localized.class)
@@ -98,6 +106,15 @@ public class PartyBean extends PartySummaryBean {
     private transient PartyRoleBean selectedRole;
     //modified by wandechris
     private Date dateOfBirth;
+    
+    private StateTypeBean state_of_origin;
+    private LgaTypeBean lga_code;
+    private String home_town;
+    private String corporate_name;
+    private String occupation;
+    private String employer_name;
+    //private String employer_address_id;
+    //private String present_home_address_id;
 
     /** 
      * Default constructor to create party bean. Initializes 
@@ -140,6 +157,60 @@ public class PartyBean extends PartySummaryBean {
     public void setAddress(AddressBean addressBean) {
         this.addressBean = addressBean;
     }
+
+    //modified by wandechris
+     public String getLgaCode() {
+        if (lga_code != null) {
+            return lga_code.getCode();
+        } else {
+            return null;
+        }
+    }
+
+    public void setLgaCode(String lgaCode) {
+        String oldValue = null;
+        if (lga_code != null) {
+            oldValue = lga_code.getCode();
+        }
+        setLga_code(CacheManager.getBeanByCode(
+                CacheManager.getLgaTypes(), lgaCode));
+        propertySupport.firePropertyChange(LGA_CODE_PROPERTY, oldValue, lgaCode);
+    }
+    public LgaTypeBean getLga_code() {
+        return lga_code;
+    }
+
+    public void setLga_code(LgaTypeBean lga_code) {
+        this.lga_code = lga_code;
+    }
+    
+     public String getStateCode() {
+        if (state_of_origin != null) {
+            return state_of_origin.getCode();
+        } else {
+            return null;
+        }
+    }
+
+    public void setStateCode(String stateCode) {
+        String oldValue = null;
+        if (state_of_origin != null) {
+            oldValue = state_of_origin.getCode();
+        }
+        setState_of_origin(CacheManager.getBeanByCode(
+                CacheManager.getStateTypes(), stateCode));
+        propertySupport.firePropertyChange(STATE_CODE_PROPERTY, oldValue, stateCode);
+    }
+
+    public StateTypeBean getState_of_origin() {
+        return state_of_origin;
+    }
+
+    public void setState_of_origin(StateTypeBean state_of_origin) {
+        this.state_of_origin = state_of_origin;
+    }
+    
+    
 
     public String getEmail() {
         return email;
@@ -274,6 +345,49 @@ public class PartyBean extends PartySummaryBean {
         this.dateOfBirth = value;
         propertySupport.firePropertyChange(DATE_OF_BIRTH, oldValue, this.dateOfBirth);
     }
+    
+    //modified by WandeChris
+
+    public String getCorporate_name() {
+        return corporate_name;
+    }
+
+    public void setCorporate_name(String value) {
+        String old = corporate_name;
+        this.corporate_name = value;
+        propertySupport.firePropertyChange(CORPORATE_NAME_PROPERTY, old, value);
+    }
+
+    public String getEmployer_name() {
+        return employer_name;
+    }
+
+    public void setEmployer_name(String value) {
+        String old = employer_name;
+        this.employer_name = value;
+        propertySupport.firePropertyChange(EMPLOYER_NAME_PROPERTY, old, value);
+    }
+
+    public String getHome_town() {
+        return home_town;
+    }
+
+    public void setHome_town(String value) {
+       String old = home_town;
+        this.home_town = value;
+        propertySupport.firePropertyChange(HOME_TOWN_PROPERTY, old, value);
+    }
+
+    public String getOccupation() {
+        return occupation;
+    }
+
+    public void setOccupation(String value) {
+       String old = occupation;
+        this.occupation = value;
+        propertySupport.firePropertyChange(OCCUPATION_PROPERTY, old, value);
+    }
+    
 
     
     public PartyRoleBean getSelectedRole() {

@@ -192,6 +192,21 @@ public final class CacheManager {
      */
     public static final String LEASE_CONDITION_CODES_KEY = LeaseConditionBean.class.getName() + LIST_POSTFIX;
     
+    //mofified by wandechris
+    /** Cache key of the {@link CapacityTypeBean} collection.*/
+    public static final String CAPACITY_TYPE_KEY = CapacityTypeBean.class.getName() + LIST_POSTFIX;
+    
+    /** Cache key of the {@link DevelopmentStageTypeBean} collection.*/
+    public static final String DEVELOPMENT_STAGE_TYPE_KEY = DevelopmentStageTypeBean.class.getName() + LIST_POSTFIX;
+    
+    /** Cache key of the {@link StateTypeBean} collection.*/
+    public static final String STATE_TYPE_KEY = StateTypeBean.class.getName() + LIST_POSTFIX;
+    
+    /** Cache key of the {@link LgaTypeBean} collection.*/
+    public static final String LGA_TYPE_KEY = LgaTypeBean.class.getName() + LIST_POSTFIX;
+
+
+    
     private static final String GET_APPLICATION_STATUS_TYPES = "getApplicationStatusTypes";
     private static final String GET_SOURCE_TYPES = "getSourceTypes";
     private static final String GET_COMMUNICATION_TYPES = "getCommunicationTypes";
@@ -221,6 +236,12 @@ public final class CacheManager {
     private static final String GET_BA_UNIT_REL_TYPES = "getBaUnitRelTypes";
     private static final String GET_LAND_USE_TYPES = "getLandUseTypes";
     private static final String GET_LEASE_CONDITIONS = "getLeaseConditions";
+    
+    //modified by WandeChris
+    private static final String GET_STATE_TYPES = "getStateTypes";
+    private static final String GET_LGA_TYPES = "getLgaTypes";
+    private static final String GET_CAPACITY_TYPES = "getCapacityTypes";
+    private static final String GET_DEVELOPMENT_STAGE_TYPES = "getDevelopmentStageTypes";
             
     public static List<BrValidationTargetTypeBean> getBrValidationTargetTypes() {
         return getCachedBeanList(BrValidationTargetTypeBean.class,
@@ -435,6 +456,31 @@ public final class CacheManager {
                 GET_REQUEST_TYPES, REQUEST_TYPES_KEY),
                 REQUEST_TYPES_MAP_KEY);
     }
+    //modified by Wandechris
+    public static List<StateTypeBean> getStateTypes() {
+	return getCachedBeanList(StateTypeBean.class,
+			WSManager.getInstance().getReferenceDataService(),
+			GET_STATE_TYPES, STATE_TYPE_KEY); }
+    
+    public static List<LgaTypeBean> getLgaTypes() {
+	return getCachedBeanList(LgaTypeBean.class,
+			WSManager.getInstance().getReferenceDataService(),
+			GET_LGA_TYPES, LGA_TYPE_KEY); }
+
+    
+    public static List<CapacityTypeBean> getCapacityTypes() {
+	return getCachedBeanList(CapacityTypeBean.class,
+			WSManager.getInstance().getReferenceDataService(),
+			GET_CAPACITY_TYPES, CAPACITY_TYPE_KEY); }
+
+    
+    public static List<DevelopmentStageTypeBean> getDevelopmentStageTypes() {
+	return getCachedBeanList(DevelopmentStageTypeBean.class,
+			WSManager.getInstance().getReferenceDataService(),
+			GET_DEVELOPMENT_STAGE_TYPES, DEVELOPMENT_STAGE_TYPE_KEY); }
+
+
+
 
     /**
      * Generic method to create cached list of the beans, representing reference
