@@ -32,6 +32,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.Size;
 import org.jdesktop.observablecollections.ObservableCollections;
 import org.jdesktop.observablecollections.ObservableList;
+import org.sola.clients.beans.address.AddressBean;
 import org.sola.clients.beans.application.validation.ApplicationCheck;
 import org.sola.clients.beans.applicationlog.ApplicationLogBean;
 import org.sola.clients.beans.cache.CacheManager;
@@ -596,7 +597,7 @@ public class ApplicationBean extends ApplicationSummaryBean {
      * @param area The area of parcel.
      * @param value The value of parcel.
      */
-    public void addProperty(String firstPart, String lastPart, BigDecimal area, BigDecimal value, String landUse) {
+    public void addProperty(String firstPart, String lastPart, BigDecimal area, BigDecimal value, String landUse, String capacity, AddressBean propertyLoc, String developmentStage, String propertyDuration) {
 
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("org/sola/clients/swing/desktop/application/Bundle");
 
@@ -629,6 +630,10 @@ public class ApplicationBean extends ApplicationSummaryBean {
             newProperty.setNameLastpart(lastPart);
             newProperty.setTotalValue(value);
             newProperty.setLandUseCode(landUse);
+            newProperty.setCapacityCode(capacity);
+            newProperty.setDevelopmentStageCode(developmentStage);
+            newProperty.setPropertyDuration(propertyDuration);
+            newProperty.setAddress(propertyLoc);
             propertyList.addAsNew(newProperty);
             selectedProperty = newProperty;
         }

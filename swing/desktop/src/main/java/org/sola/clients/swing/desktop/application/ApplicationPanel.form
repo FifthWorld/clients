@@ -2162,7 +2162,7 @@
                       </Properties>
                       <BindingProperties>
                         <BindingProperty name="elements" source="developmentStageTypeListBean" sourcePath="${developmentStageTypes}" target="cbxDevelopmentStage" targetPath="elements" updateStrategy="0" immediately="false"/>
-                        <BindingProperty name="selectedItem" source="developmentStageTypeListBean" sourcePath="${selectedDevelopmentStageType}" target="cbxDevelopmentStage" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+                        <BindingProperty name="selectedItem" source="Form" sourcePath="${property.developmentStageType}" target="cbxDevelopmentStage" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
                       </BindingProperties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel10">
@@ -2183,7 +2183,7 @@
                       </Properties>
                       <BindingProperties>
                         <BindingProperty name="elements" source="capacityTypeListBean" sourcePath="${capacityTypes}" target="cbxOwnershipCapacity" targetPath="elements" updateStrategy="0" immediately="false"/>
-                        <BindingProperty name="selectedItem" source="capacityTypeListBean" sourcePath="${selectedCapacityType}" target="cbxOwnershipCapacity" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+                        <BindingProperty name="selectedItem" source="Form" sourcePath="${property.capacityType}" target="cbxOwnershipCapacity" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
                       </BindingProperties>
                     </Component>
                   </SubComponents>

@@ -44,6 +44,7 @@ import javax.swing.JTextField;
 import net.sf.jasperreports.engine.JasperPrint;
 import org.jdesktop.observablecollections.ObservableList;
 import org.jdesktop.observablecollections.ObservableListListener;
+import org.sola.clients.beans.address.AddressBean;
 import org.sola.clients.beans.administrative.BaUnitBean;
 import org.sola.clients.beans.application.ApplicationBean;
 import org.sola.clients.beans.application.ApplicationDocumentsHelperBean;
@@ -2365,7 +2366,7 @@ public class ApplicationPanel extends ContentPanel {
         eLProperty = org.jdesktop.beansbinding.ELProperty.create("${developmentStageTypes}");
         jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, developmentStageTypeListBean, eLProperty, cbxDevelopmentStage);
         bindingGroup.addBinding(jComboBoxBinding);
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, developmentStageTypeListBean, org.jdesktop.beansbinding.ELProperty.create("${selectedDevelopmentStageType}"), cbxDevelopmentStage, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${property.developmentStageType}"), cbxDevelopmentStage, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
         bindingGroup.addBinding(binding);
 
         jLabel10.setText(bundle.getString("ApplicationPanel.jLabel10.text")); // NOI18N
@@ -2376,7 +2377,7 @@ public class ApplicationPanel extends ContentPanel {
         eLProperty = org.jdesktop.beansbinding.ELProperty.create("${capacityTypes}");
         jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, capacityTypeListBean, eLProperty, cbxOwnershipCapacity);
         bindingGroup.addBinding(jComboBoxBinding);
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, capacityTypeListBean, org.jdesktop.beansbinding.ELProperty.create("${selectedCapacityType}"), cbxOwnershipCapacity, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${property.capacityType}"), cbxOwnershipCapacity, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
         bindingGroup.addBinding(binding);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -2996,12 +2997,13 @@ public class ApplicationPanel extends ContentPanel {
 }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnAddPropertyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddPropertyActionPerformed
+      
         if (txtFirstPart.getText() == null || txtFirstPart.getText().equals("")
                 || txtLastPart.getText() == null || txtLastPart.getText().equals("")) {
             MessageUtility.displayMessage(ClientMessage.CHECK_FIRST_LAST_PROPERTY);
             return;
         }
-
+        
         BigDecimal area = null;
         BigDecimal value = null;
 
@@ -3015,7 +3017,10 @@ public class ApplicationPanel extends ContentPanel {
         } catch (Exception e) {
         }
         String landUse = this.getProperty().getLandUseCode();
-        appBean.addProperty(txtFirstPart.getText(), txtLastPart.getText(), area, value, landUse);
+        String capacity = this.getProperty().getCapacityCode();
+        String developmentStage = this.getProperty().getDevelopmentStageCode();
+        AddressBean propertyLoc = this.getProperty().getAddress();
+        appBean.addProperty(txtFirstPart.getText(), txtLastPart.getText(), area, value, landUse, capacity, propertyLoc, developmentStage, txtPossession.getText());
         clearPropertyFields();
         verifySelectedProperty();
         txtFirstPart.requestFocus();
