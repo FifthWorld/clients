@@ -247,6 +247,12 @@
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="createBaUnitAreaBean();"/>
       </AuxValues>
     </Component>
+    <Component class="org.sola.clients.beans.referencedata.DevelopmentStageTypeListBean" name="developmentStageTypes">
+    </Component>
+    <Component class="org.sola.clients.beans.referencedata.CapacityTypeListBean" name="capacityTypes">
+    </Component>
+    <Component class="org.sola.clients.beans.application.ApplicationPropertyBean" name="applicationPropertyBean">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="headerPanel" type="org.sola.clients.swing.ui.HeaderPanel" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -640,6 +646,7 @@
                           <BindingProperties>
                             <BindingProperty name="text" source="baUnitBean1" sourcePath="${nameLastpart}" target="txtLastPart" targetPath="text" updateStrategy="0" immediately="false">
                               <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+                              <Property name="name" type="java.lang.String" value=""/>
                             </BindingProperty>
                           </BindingProperties>
                         </Component>
@@ -842,13 +849,16 @@
                         </Component>
                         <Component class="javax.swing.JComboBox" name="cbxDevelopmentStage">
                           <Properties>
-                            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                              <StringArray count="0"/>
-                            </Property>
                             <Property name="name" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
                               <ResourceString bundle="org/sola/clients/swing/desktop/administrative/Bundle.properties" key="PropertyPanel.cbxDevelopmentStage.name" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                             </Property>
                           </Properties>
+                          <BindingProperties>
+                            <BindingProperty name="elements" source="developmentStageTypes" sourcePath="${developmentStageTypes}" target="cbxDevelopmentStage" targetPath="elements" updateStrategy="0" immediately="false">
+                              <Property name="name" type="java.lang.String" value=""/>
+                            </BindingProperty>
+                            <BindingProperty name="selectedItem" source="developmentStageTypes" sourcePath="${selectedDevelopmentStageType}" target="cbxDevelopmentStage" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+                          </BindingProperties>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -893,13 +903,14 @@
                         </Component>
                         <Component class="javax.swing.JComboBox" name="cbxOwnershipCapacity">
                           <Properties>
-                            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                              <StringArray count="0"/>
-                            </Property>
                             <Property name="name" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
                               <ResourceString bundle="org/sola/clients/swing/desktop/administrative/Bundle.properties" key="PropertyPanel.cbxOwnershipCapacity.name" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                             </Property>
                           </Properties>
+                          <BindingProperties>
+                            <BindingProperty name="elements" source="capacityTypes" sourcePath="${capacityTypes}" target="cbxOwnershipCapacity" targetPath="elements" updateStrategy="0" immediately="false"/>
+                            <BindingProperty name="selectedItem" source="capacityTypes" sourcePath="${selectedCapacityType}" target="cbxOwnershipCapacity" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+                          </BindingProperties>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -998,13 +1009,15 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtPossession">
                           <Properties>
-                            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                              <ResourceString bundle="org/sola/clients/swing/desktop/administrative/Bundle.properties" key="PropertyPanel.txtPossession.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
-                            </Property>
                             <Property name="name" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
                               <ResourceString bundle="org/sola/clients/swing/desktop/administrative/Bundle.properties" key="PropertyPanel.txtPossession.name" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                             </Property>
                           </Properties>
+                          <BindingProperties>
+                            <BindingProperty name="text" source="applicationPropertyBean" sourcePath="${propertyDuration}" target="txtPossession" targetPath="text" updateStrategy="0" immediately="false">
+                              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+                            </BindingProperty>
+                          </BindingProperties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPossessionActionPerformed"/>
                           </Events>

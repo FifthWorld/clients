@@ -1198,6 +1198,9 @@ public class PropertyPanel extends ContentPanel {
         popupChildBaUnits = new javax.swing.JPopupMenu();
         menuOpenChildBaUnit = new javax.swing.JMenuItem();
         baUnitAreaBean1 = createBaUnitAreaBean();
+        developmentStageTypes = new org.sola.clients.beans.referencedata.DevelopmentStageTypeListBean();
+        capacityTypes = new org.sola.clients.beans.referencedata.CapacityTypeListBean();
+        applicationPropertyBean = new org.sola.clients.beans.application.ApplicationPropertyBean();
         jToolBar5 = new javax.swing.JToolBar();
         btnSave = new javax.swing.JButton();
         btnTerminate = new javax.swing.JButton();
@@ -1600,7 +1603,7 @@ public class PropertyPanel extends ContentPanel {
         txtLastPart.setEditable(false);
         txtLastPart.setName("txtLastPart"); // NOI18N
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, baUnitBean1, org.jdesktop.beansbinding.ELProperty.create("${nameLastpart}"), txtLastPart, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, baUnitBean1, org.jdesktop.beansbinding.ELProperty.create("${nameLastpart}"), txtLastPart, org.jdesktop.beansbinding.BeanProperty.create("text"), "");
         bindingGroup.addBinding(binding);
 
         org.jdesktop.layout.GroupLayout jPanel9Layout = new org.jdesktop.layout.GroupLayout(jPanel9);
@@ -1728,6 +1731,12 @@ public class PropertyPanel extends ContentPanel {
 
         cbxDevelopmentStage.setName(bundle.getString("PropertyPanel.cbxDevelopmentStage.name")); // NOI18N
 
+        org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${developmentStageTypes}");
+        org.jdesktop.swingbinding.JComboBoxBinding jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, developmentStageTypes, eLProperty, cbxDevelopmentStage, "");
+        bindingGroup.addBinding(jComboBoxBinding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, developmentStageTypes, org.jdesktop.beansbinding.ELProperty.create("${selectedDevelopmentStageType}"), cbxDevelopmentStage, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+
         org.jdesktop.layout.GroupLayout jPanel18Layout = new org.jdesktop.layout.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
         jPanel18Layout.setHorizontalGroup(
@@ -1754,6 +1763,12 @@ public class PropertyPanel extends ContentPanel {
         jLabel10.setName(bundle.getString("PropertyPanel.jLabel10.name")); // NOI18N
 
         cbxOwnershipCapacity.setName(bundle.getString("PropertyPanel.cbxOwnershipCapacity.name")); // NOI18N
+
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${capacityTypes}");
+        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, capacityTypes, eLProperty, cbxOwnershipCapacity);
+        bindingGroup.addBinding(jComboBoxBinding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, capacityTypes, org.jdesktop.beansbinding.ELProperty.create("${selectedCapacityType}"), cbxOwnershipCapacity, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
 
         org.jdesktop.layout.GroupLayout jPanel19Layout = new org.jdesktop.layout.GroupLayout(jPanel19);
         jPanel19.setLayout(jPanel19Layout);
@@ -1813,8 +1828,11 @@ public class PropertyPanel extends ContentPanel {
         jLabel12.setText(bundle.getString("PropertyPanel.jLabel12.text")); // NOI18N
         jLabel12.setName(bundle.getString("PropertyPanel.jLabel12.name")); // NOI18N
 
-        txtPossession.setText(bundle.getString("PropertyPanel.txtPossession.text")); // NOI18N
         txtPossession.setName(bundle.getString("PropertyPanel.txtPossession.name")); // NOI18N
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, applicationPropertyBean, org.jdesktop.beansbinding.ELProperty.create("${propertyDuration}"), txtPossession, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
         txtPossession.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPossessionActionPerformed(evt);
@@ -1882,7 +1900,7 @@ public class PropertyPanel extends ContentPanel {
         tableParcels.setComponentPopupMenu(popupParcels);
         tableParcels.setName("tableParcels"); // NOI18N
 
-        org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${cadastreObjectFilteredList}");
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${cadastreObjectFilteredList}");
         org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, baUnitBean1, eLProperty, tableParcels);
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nameFirstpart}"));
         columnBinding.setColumnName("Name Firstpart");
@@ -2072,7 +2090,7 @@ public class PropertyPanel extends ContentPanel {
         cbxRightType.setRenderer(new SimpleComboBoxRenderer("getDisplayValue"));
 
         eLProperty = org.jdesktop.beansbinding.ELProperty.create("${rrrTypeBeanList}");
-        org.jdesktop.swingbinding.JComboBoxBinding jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, rrrTypes, eLProperty, cbxRightType);
+        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, rrrTypes, eLProperty, cbxRightType);
         bindingGroup.addBinding(jComboBoxBinding);
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, rrrTypes, org.jdesktop.beansbinding.ELProperty.create("${selectedRrrType}"), cbxRightType, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
         bindingGroup.addBinding(binding);
@@ -2953,6 +2971,7 @@ private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:
     }//GEN-LAST:event_txtPossessionActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private org.sola.clients.beans.application.ApplicationPropertyBean applicationPropertyBean;
     private javax.swing.JPanel areaPanel;
     private org.sola.clients.beans.administrative.BaUnitAreaBean baUnitAreaBean1;
     private org.sola.clients.beans.administrative.BaUnitBean baUnitBean1;
@@ -2979,9 +2998,11 @@ private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:
     private javax.swing.JButton btnViewHistoricRight;
     private javax.swing.JButton btnViewPaperTitle;
     private javax.swing.JButton btnViewRight;
+    private org.sola.clients.beans.referencedata.CapacityTypeListBean capacityTypes;
     private javax.swing.JComboBox cbxDevelopmentStage;
     private javax.swing.JComboBox cbxOwnershipCapacity;
     private javax.swing.JComboBox cbxRightType;
+    private org.sola.clients.beans.referencedata.DevelopmentStageTypeListBean developmentStageTypes;
     private org.sola.clients.swing.ui.source.DocumentsPanel documentsPanel1;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
