@@ -170,7 +170,7 @@ public class ApplicationPropertyBean extends AbstractIdBean {
         }
         setDevelopmentStageType(CacheManager.getBeanByCode(
                 CacheManager.getDevelopmentStageTypes(), developmentStageCode));
-        propertySupport.firePropertyChange(CAPACITY_CODE_PROPERTY, oldValue, developmentStageCode);
+        propertySupport.firePropertyChange(DEVELOPMENT_STAGE_CODE_PROPERTY, oldValue, developmentStageCode);
     }
 
     public DevelopmentStageTypeBean getDevelopmentStageType() {
