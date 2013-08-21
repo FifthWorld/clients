@@ -94,7 +94,7 @@
               <Component id="individualButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Component id="entityButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="500" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Component id="detailsPanel" pref="0" max="32767" attributes="0"/>
       </Group>
@@ -144,7 +144,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jPanel1" alignment="0" max="32767" attributes="3"/>
-                          <Component id="groupPanel1" alignment="0" pref="609" max="32767" attributes="0"/>
+                          <Component id="groupPanel1" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -327,7 +327,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="labName" alignment="0" pref="199" max="32767" attributes="0"/>
+                          <Component id="labName" alignment="0" pref="212" max="32767" attributes="0"/>
                           <Component id="txtFirstName" alignment="0" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
@@ -382,7 +382,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="labLastName" alignment="0" pref="199" max="32767" attributes="0"/>
+                          <Component id="labLastName" alignment="0" pref="212" max="32767" attributes="0"/>
                           <Component id="txtLastName" alignment="0" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
@@ -431,7 +431,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="labAddress" alignment="0" pref="199" max="32767" attributes="0"/>
+                          <Component id="labAddress" alignment="0" pref="212" max="32767" attributes="0"/>
                           <Component id="txtAddress" alignment="0" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
@@ -480,7 +480,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="labIdType" alignment="0" pref="199" max="32767" attributes="0"/>
+                          <Component id="labIdType" alignment="0" pref="212" max="32767" attributes="0"/>
                           <Component id="cbxIdType" alignment="0" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
@@ -532,7 +532,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="labIdref" alignment="0" pref="199" max="32767" attributes="0"/>
+                          <Component id="labIdref" alignment="0" pref="212" max="32767" attributes="0"/>
                           <Component id="txtIdref" alignment="0" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
@@ -576,7 +576,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblGender" alignment="0" pref="199" max="32767" attributes="0"/>
+                          <Component id="lblGender" alignment="0" pref="212" max="32767" attributes="0"/>
                           <Component id="cbxGender" alignment="0" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
@@ -635,7 +635,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="45" pref="138" max="32767" attributes="0"/>
+                              <EmptySpace min="45" pref="151" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="txtDateOfBirth" max="32767" attributes="0"/>
@@ -718,7 +718,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="120" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="133" max="32767" attributes="0"/>
                           </Group>
                           <Component id="txtPresentAddress" max="32767" attributes="0"/>
                       </Group>
@@ -752,7 +752,7 @@
                         </Property>
                       </Properties>
                       <BindingProperties>
-                        <BindingProperty name="text" source="Form" sourcePath="${partyBean.address.description}" target="txtPresentAddress" targetPath="text" updateStrategy="0" immediately="false">
+                        <BindingProperty name="text" source="Form" sourcePath="${partyBean.presentAddress.description}" target="txtPresentAddress" targetPath="text" updateStrategy="0" immediately="false">
                           <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
                         </BindingProperty>
                       </BindingProperties>
@@ -801,7 +801,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jPanel3" alignment="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="groupPanel2" alignment="0" pref="609" max="32767" attributes="0"/>
+                          <Component id="groupPanel2" alignment="0" pref="646" max="32767" attributes="0"/>
                           <Component id="jPanel18" alignment="0" pref="0" max="32767" attributes="0"/>
                           <Component id="groupPanel3" alignment="0" pref="0" max="32767" attributes="0"/>
                           <Component id="jPanel25" alignment="0" pref="0" max="32767" attributes="0"/>
@@ -850,7 +850,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="labFatherFirstName" min="-2" pref="125" max="-2" attributes="1"/>
-                              <EmptySpace pref="68" max="32767" attributes="0"/>
+                              <EmptySpace pref="80" max="32767" attributes="0"/>
                           </Group>
                           <Component id="txtFatherFirstName" alignment="0" max="32767" attributes="1"/>
                       </Group>
@@ -897,7 +897,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="labFatherLastName" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="112" max="32767" attributes="0"/>
+                              <EmptySpace pref="124" max="32767" attributes="0"/>
                           </Group>
                           <Component id="txtFatherLastName" alignment="0" max="32767" attributes="1"/>
                       </Group>
@@ -944,7 +944,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="labAlias" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="171" max="32767" attributes="0"/>
+                              <EmptySpace pref="183" max="32767" attributes="0"/>
                           </Group>
                           <Component id="txtAlias" alignment="0" max="32767" attributes="1"/>
                       </Group>
@@ -1005,7 +1005,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="labPhone" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="163" max="32767" attributes="0"/>
+                              <EmptySpace pref="175" max="32767" attributes="0"/>
                           </Group>
                           <Component id="txtPhone" alignment="0" max="32767" attributes="1"/>
                       </Group>
@@ -1059,7 +1059,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="labMobile" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="163" max="32767" attributes="0"/>
+                              <EmptySpace pref="175" max="32767" attributes="0"/>
                           </Group>
                           <Component id="txtMobile" alignment="0" max="32767" attributes="1"/>
                       </Group>
@@ -1106,7 +1106,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="labFax" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="175" max="32767" attributes="0"/>
+                              <EmptySpace pref="187" max="32767" attributes="0"/>
                           </Group>
                           <Component id="txtFax" alignment="0" max="32767" attributes="1"/>
                       </Group>
@@ -1157,7 +1157,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="labEmail" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="165" max="32767" attributes="0"/>
+                              <EmptySpace pref="177" max="32767" attributes="0"/>
                           </Group>
                           <Component id="txtEmail" alignment="0" max="32767" attributes="1"/>
                       </Group>
@@ -1208,7 +1208,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="labPreferredWay" min="-2" max="-2" attributes="1"/>
-                              <EmptySpace min="0" pref="74" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="86" max="32767" attributes="0"/>
                           </Group>
                           <Component id="cbxCommunicationWay" alignment="0" max="32767" attributes="3"/>
                       </Group>
@@ -1306,7 +1306,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="txtOccupation" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel5" pref="183" max="32767" attributes="0"/>
+                              <Component id="jLabel5" pref="195" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -1362,7 +1362,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="jLabel2" min="-2" pref="78" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="115" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="127" max="32767" attributes="0"/>
                           </Group>
                           <Component id="cbxStateOfOrigin" max="32767" attributes="0"/>
                       </Group>
@@ -1397,7 +1397,7 @@
                       </Properties>
                       <BindingProperties>
                         <BindingProperty name="elements" source="stateTypes" sourcePath="${stateTypes}" target="cbxStateOfOrigin" targetPath="elements" updateStrategy="0" immediately="false"/>
-                        <BindingProperty name="selectedItem" source="Form" sourcePath="${partyBean.state_of_origin}" target="cbxStateOfOrigin" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+                        <BindingProperty name="selectedItem" source="Form" sourcePath="${partyBean.state_code}" target="cbxStateOfOrigin" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
                       </BindingProperties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbxStateOfOriginActionPerformed"/>
@@ -1417,7 +1417,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="130" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="142" max="32767" attributes="0"/>
                           </Group>
                           <Component id="cbxLGA" max="32767" attributes="0"/>
                       </Group>
@@ -1469,7 +1469,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="142" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="154" max="32767" attributes="0"/>
                           </Group>
                           <Component id="txtHometown" max="32767" attributes="0"/>
                       </Group>
@@ -1503,7 +1503,7 @@
                         </Property>
                       </Properties>
                       <BindingProperties>
-                        <BindingProperty name="text" source="Form" sourcePath="${partyBean.home_town}" target="txtHometown" targetPath="text" updateStrategy="0" immediately="false">
+                        <BindingProperty name="text" source="Form" sourcePath="${partyBean.homeTown}" target="txtHometown" targetPath="text" updateStrategy="0" immediately="false">
                           <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
                         </BindingProperty>
                       </BindingProperties>
@@ -1522,7 +1522,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="112" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="124" max="32767" attributes="0"/>
                           </Group>
                           <Component id="txtEmployerName" max="32767" attributes="0"/>
                       </Group>
@@ -1556,7 +1556,7 @@
                         </Property>
                       </Properties>
                       <BindingProperties>
-                        <BindingProperty name="text" source="Form" sourcePath="${partyBean.employer_name}" target="txtEmployerName" targetPath="text" updateStrategy="0" immediately="false">
+                        <BindingProperty name="text" source="Form" sourcePath="${partyBean.employerName}" target="txtEmployerName" targetPath="text" updateStrategy="0" immediately="false">
                           <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
                         </BindingProperty>
                       </BindingProperties>
@@ -1579,7 +1579,7 @@
                           <Component id="txtEmployersAddress" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel8" min="-2" pref="109" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="84" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="96" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1612,7 +1612,7 @@
                         </Property>
                       </Properties>
                       <BindingProperties>
-                        <BindingProperty name="text" source="Form" sourcePath="${partyBean.address.description}" target="txtEmployersAddress" targetPath="text" updateStrategy="0" immediately="false">
+                        <BindingProperty name="text" source="Form" sourcePath="${partyBean.employerAddress.description}" target="txtEmployersAddress" targetPath="text" updateStrategy="0" immediately="false">
                           <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
                         </BindingProperty>
                       </BindingProperties>
